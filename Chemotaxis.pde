@@ -1,30 +1,25 @@
-colony = new chemotaxis[100];
-
-void setup(){
+chemotaxis [] colony =  new chemotaxis[100];
+void setup() {
   size(500, 500);
-  frameRate(20);
   background(255);
-  for(int i = 0; i < colony.length; i++){
+  for (int i =0; i < colony.length; i++) {
     colony[i] = new chemotaxis();
   }
 }
-
-void draw(){
+void draw() {
+  background(255);
   for (int i = 0; i < colony.length; i++) {
-    colony[i].show();
     colony[i].move();
+    colony[i].show();
   }
 }
+
 class chemotaxis {
   int myColor;
-  int randomX;
-  int randomY;
   int myX;
   int myY;
   int mySize;
   chemotaxis() {
-    randomX = (int)(Math.random()*501);
-    randomY = (int)(Math.random()*501);
     myX = 0;
     myY = 0;
     mySize = (int)(Math.random()*20+10);
@@ -50,18 +45,6 @@ class chemotaxis {
   void show() {
     fill(myColor);
     noStroke();
-    ellipse( randomX + myX, randomY + myY, 30, 30);
-  }
-}
-
-
-
-void draw() {
-  colony = new chemotaxis[10];
-  for (int i = 0; i < colony.length; i++) {
-    colony[i] = new chemotaxis(0, i*50);
-    colony[i].move();
-    colony[i].show();
-
+    ellipse( myX, myY, mySize, mySize);
   }
 }
